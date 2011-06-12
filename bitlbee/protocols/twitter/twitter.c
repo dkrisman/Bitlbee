@@ -79,8 +79,8 @@ void twitter_login_finish( struct im_connection *ic )
 	
 	if( set_getbool( &ic->acc->set, "oauth" ) && !td->oauth_info )
 		twitter_oauth_start( ic );
-	else if( g_strcasecmp( set_getstr( &ic->acc->set, "mode" ), "one" ) != 0 &&
-	         !( td->flags & TWITTER_HAVE_FRIENDS ) )
+	else if( g_strcasecmp( set_getstr( &ic->acc->set, "mode" ), "one" ) != 0 && 
+		 !( td->flags & TWITTER_HAVE_FRIENDS ) ) 
 	{
 		imcb_log( ic, "Getting contact list" );
 		twitter_get_statuses_friends( ic, -1 );
@@ -259,7 +259,8 @@ static void twitter_login( account_t *acc )
 		td->prefix = g_strndup( url.host, strlen( url.host ) - 4 );
 	else
 		td->prefix = g_strdup( url.host );
-	
+
+	td->flags |= TWITTER_HAVE_FRIENDS;
 	td->user = acc->user;
 	if( strstr( acc->pass, "oauth_token=" ) )
 		td->oauth_info = oauth_from_string( acc->pass, &twitter_oauth );

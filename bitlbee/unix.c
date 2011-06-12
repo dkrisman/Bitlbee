@@ -80,18 +80,6 @@ int main( int argc, char *argv[] )
 	nogaim_init();
 #endif
 	
- 	/* Ugly Note: libotr and gnutls both use libgcrypt. libgcrypt
- 	   has a process-global config state whose initialization happpens
- 	   twice if libotr and gnutls are used together. libotr installs custom
- 	   memory management functions for libgcrypt while our gnutls module
- 	   uses the defaults. Therefore we initialize OTR after SSL. *sigh* */
- 	ssl_init();
-#ifdef OTR_BI
- 	otr_init();
-#endif
-	/* And in case OTR is loaded as a plugin, it'll also get loaded after
-	   this point. */
-	
 	srand( time( NULL ) ^ getpid() );
 	
 	global.helpfile = g_strdup( HELP_FILE );
@@ -155,7 +143,20 @@ int main( int argc, char *argv[] )
 			setuid( pw->pw_uid );
 		}
 	}
- 	
+
+        /* Ugly Note: libotr and gnutls both use libgcrypt. libgcrypt
+ 	   has a process-global config state whose initialization happpens
+ 	   twice if libotr and gnutls are used together. libotr installs custom
+ 	   memory management functions for libgcrypt while our gnutls module
+ 	   uses the defaults. Therefore we initialize OTR after SSL. *sigh* */
+ 	ssl_init();
+#ifdef OTR_BI
+ 	otr_init();
+#endif
+	/* And in case OTR is loaded as a plugin, it'll also get loaded after
+	   this point. */
+	
+
 	/* Catch some signals to tell the user what's happening before quitting */
 	memset( &sig, 0, sizeof( sig ) );
 	sig.sa_handler = sighandler;
