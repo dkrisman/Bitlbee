@@ -1,0 +1,71 @@
+Frequently Asked Questions about BitlBee
+========================================
+
+Well, maybe not exactly "Frequently", but definitely "Asked" ... mostly by
+the developers :-)
+
+Q: WTH were you guys on when you thought of that _weird_ name?
+A: Though we live in The Netherlands and one of us even lives in Amsterdam,
+   we're not on drugs ... most of the time.
+
+Q: Okay, so the cops are so evil there, you can't even admit the truth, but
+   WTH does BitlBee mean then?
+A: There are a few explanations. But the most symbolical goes like: the two
+   colors of the bee symbolize the two worlds betwee which the Bee flies. On
+   the one hand there's the IM-networks, on the other is IRC.
+   
+   Truth be told, it's absolute nonsense. The biggest nutcase in the
+   development team just played around with words for half an hour or so.
+   BitlBee was the result. We liked it, we kept it. We lovingly shorten it
+   to "the Bee" or even "het Bijtje" (Dutch for "the little Bee") sometimes.
+
+Q: What is 'root' doing in my control channel? I didn't start the Bee as
+   root.
+A: 'root' is just the name for the most powerful user in BitlBee. Just like
+   in the system, it is root who is the ... eh ... root of the
+   functionality. Luckily, in BitlBee, root follows your orders (mostly), so
+   no BOFHs there.
+   
+   We get some complaints from time to time that 'root' is a confusing name.
+   Because of that name, some package maintainers have renamed root to, for
+   example, BitlBee. We recognize that some people see that need. If the
+   package maintainer hasn't renamed root, you can do this yourself with the
+   'rename' command.
+   
+   The name root is not likely to change in the 'official' releases, though.
+   We find the metaphor of root correct and feel that there is no important
+   (security threatening) reason to change this non-creative piece of
+   artistic creativity.
+
+Q: When is $random_feature going to be implemented?
+A: It depends on the feature. We keep a list of all wishlist "bugs" in our
+   Bug Tracking system at http://bugs.bitlbee.org/
+
+Q: The messages I send and/or receive look weird. I see weird characters and
+   annoying HTML codes. Or, BitlBee does evil things when I send messages with
+   non-ASCII characters!
+A: You probably have to change some settings. To get rid of HTML in messages,
+   see "help set strip_html". If you seem to have problems with your charset,
+   see "help set charset".
+   
+   Although actually most of these problems should be gone by now. So if you
+   can't get things to work well, you might have found a bug.
+
+Q: Is BitlBee forked from Gaim?
+A: BitlBee 0.7 was, sort-of. It contained a lot of code from Gaim 0.58
+   (mainly the IM-code), although heavily modified, to make it work better
+   with BitlBee. We were planning to keep BitlBee up-to-date with later Gaim
+   versions, but this turned out to be very time-consuming because the API
+   changed a lot, and we don't have the time to keep up with those changes
+   all the time.
+   
+   These days, we replaced the Yahoo! code with libyahoo2 (which is a
+   separate Yahoo! module. It's derived from Gaim, but separately
+   maintained) and wrote our own MSN, Jabber and Twitter modules from
+   scratch. Most of the API has also been changed, so by now the only traces
+   of Gaim left are in the "nogaim" filename.
+   
+   There is good news for Gaim (or now Pidgin, of course) fans though:
+   BitlBee can now be compiled to use libpurple for all IM interactions.
+   This makes BitlBee a bit more resource-hungry, but adds support for many
+   IM protocols/networks that couldn't be used from BitlBee so far.

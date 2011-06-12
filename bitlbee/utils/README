@@ -1,0 +1,35 @@
+This directory contains tiny additional programs which you might just like
+or need to run BitlBee:
+
+
+* bitlbeed.c
+
+If you want to run BitlBee on a machine you don't have root access to, this
+utility will help you. Compiling it is easy: 'gcc bitlbeed.c -o bitlbeed',
+you don't need any special flags. Use 'bitlbeed -h' to get more help.
+
+For example, 'bitlbeed -p6669 -n1 /home/wilmer/bin/bitlbee' will start
+listening on TCP port 6669 (on any interface, you might not want that!)
+and connect the specified BitlBee program to this socket as soon as
+someone connects. The -n1 makes sure only one person can be connected
+at once.
+
+Of course this program can be used for other programs too, not just BitlBee.
+
+
+* convert_purple.py
+
+Converts libpurple configs into something BitlBee can use, so you don't
+have to re-add all your accounts by hand.
+
+
+* BitlBee-specific Irssi scripts for: tab completion, typing notifica-
+tions, auto-away and more, by Tijmen Ruizendaal <tijmen.ruizendaal@gmail.com>.
+
+There are too many scripts to include them all with BitlBee (and keep
+them up-to-date), so you should get them from Tijmen's site:
+
+http://the-timing.nl/stuff/irssi-bitlbee
+
+
+Please do send your sources if you write anything useful for the Bee!

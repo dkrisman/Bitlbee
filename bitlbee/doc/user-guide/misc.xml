@@ -1,0 +1,368 @@
+<chapter id="misc">
+<title>Misc Stuff</title>
+
+<sect1 id="smileys">
+<title>Smileys</title>
+
+<para>
+All MSN smileys (except one) are case insensitive and work without the nose too.
+</para>
+
+<variablelist>
+	<varlistentry><term>(Y)</term><listitem><para>Thumbs up</para></listitem></varlistentry>
+	<varlistentry><term>(N)</term><listitem><para>Thumbs down</para></listitem></varlistentry>
+	<varlistentry><term>(B)</term><listitem><para>Beer mug</para></listitem></varlistentry>
+	<varlistentry><term>(D)</term><listitem><para>Martini glass</para></listitem></varlistentry>
+	<varlistentry><term>(X)</term><listitem><para>Girl</para></listitem></varlistentry>
+	<varlistentry><term>(Z)</term><listitem><para>Boy</para></listitem></varlistentry>
+	<varlistentry><term>(6)</term><listitem><para>Devil smiley</para></listitem></varlistentry>
+	<varlistentry><term>:-[</term><listitem><para>Vampire bat</para></listitem></varlistentry>
+	<varlistentry><term>(})</term><listitem><para>Right hug</para></listitem></varlistentry>
+	<varlistentry><term>({)</term><listitem><para>Left hug</para></listitem></varlistentry>
+	<varlistentry><term>(M)</term><listitem><para>MSN Messenger or Windows Messenger icon (think a BitlBee logo here ;)</para></listitem></varlistentry>
+	<varlistentry><term>:-S</term><listitem><para>Crooked smiley (Confused smiley)</para></listitem></varlistentry>
+	<varlistentry><term>:-$</term><listitem><para>Embarrassed smiley</para></listitem></varlistentry>
+	<varlistentry><term>(H)</term><listitem><para>Smiley with sunglasses</para></listitem></varlistentry>
+	<varlistentry><term>:-@</term><listitem><para>Angry smiley</para></listitem></varlistentry>
+	<varlistentry><term>(A)</term><listitem><para>Angel smiley</para></listitem></varlistentry>
+	<varlistentry><term>(L)</term><listitem><para>Red heart (Love)</para></listitem></varlistentry>
+	<varlistentry><term>(U)</term><listitem><para>Broken heart</para></listitem></varlistentry>
+	<varlistentry><term>(K)</term><listitem><para>Red lips (Kiss)</para></listitem></varlistentry>
+	<varlistentry><term>(G)</term><listitem><para>Gift with bow</para></listitem></varlistentry>
+	<varlistentry><term>(F)</term><listitem><para>Red rose</para></listitem></varlistentry>
+	<varlistentry><term>(W)</term><listitem><para>Wilted rose</para></listitem></varlistentry>
+	<varlistentry><term>(P)</term><listitem><para>Camera</para></listitem></varlistentry>
+	<varlistentry><term>(~)</term><listitem><para>Film strip</para></listitem></varlistentry>
+	<varlistentry><term>(T)</term><listitem><para>Telephone receiver</para></listitem></varlistentry>
+	<varlistentry><term>(@)</term><listitem><para>Cat face</para></listitem></varlistentry>
+	<varlistentry><term>(&amp;)</term><listitem><para>Dog's head</para></listitem></varlistentry>
+	<varlistentry><term>(C)</term><listitem><para>Coffee cup</para></listitem></varlistentry>
+	<varlistentry><term>(I)</term><listitem><para>Light bulb</para></listitem></varlistentry>
+	<varlistentry><term>(S)</term><listitem><para>Half-moon (Case sensitive!)</para></listitem></varlistentry>
+	<varlistentry><term>(*)</term><listitem><para>Star</para></listitem></varlistentry>
+	<varlistentry><term>(8)</term><listitem><para>Musical eighth note</para></listitem></varlistentry>
+	<varlistentry><term>(E)</term><listitem><para>Envelope</para></listitem></varlistentry>
+	<varlistentry><term>(^)</term><listitem><para>Birthday cake</para></listitem></varlistentry>
+	<varlistentry><term>(O)</term><listitem><para>Clock</para></listitem></varlistentry>
+</variablelist>
+
+</sect1>
+
+<sect1 id="groupchats">
+<title>Groupchats</title>
+<para>
+BitlBee now supports groupchats on all IM networks. This text will try to explain you how they work.
+</para>
+
+<para>
+As soon as someone invites you into a groupchat, you will be force-joined or invited (depending on the protocol) into a new virtual channel with all the people in there. You can leave the channel at any time, just like you would close the window in regular IM clients. Please note that root-commands don't work in groupchat channels, they only work in the control channel (or to root directly).
+</para>
+
+<para>
+Of course you can also create your own groupchats. Type <emphasis>help groupchats2</emphasis> to see how.
+</para>
+
+</sect1>
+
+<sect1 id="groupchats2">
+<title>Creating groupchats</title>
+
+<para>
+To open a groupchat, use the <emphasis>chat with</emphasis> command. For example,  to start a groupchat with the person <emphasis>lisa_msn</emphasis> in it, just type <emphasis>chat with lisa_msn</emphasis>. BitlBee will create a new virtual channel with root, you and lisa_msn in it.
+</para>
+
+<para>
+Then, just use the ordinary IRC <emphasis>/invite</emphasis> command to invite more people. Please do keep in mind that all the people have to be on the same network and contact list! You can't invite Yahoo! buddies into an MSN groupchat.
+</para>
+
+<para>
+Some protocols (like Jabber) also support named groupchats. BitlBee now supports these too. You can use the <emphasis>chat add</emphasis> command to join them. See <emphasis>help chat add</emphasis> for more information.
+</para>
+
+</sect1>
+
+<sect1 id="away">
+<title>Away states</title>
+
+<para>
+To mark yourself as away, you can just use the <emphasis>/away</emphasis> command in your IRC client. BitlBee supports most away-states supported by the protocols.
+</para>
+
+<para>
+Away states have different names accross different protocols. BitlBee will try to pick the best available option for every connection:
+</para>
+
+<simplelist>
+	<member>Away</member>
+	<member>NA</member>
+	<member>Busy, DND</member>
+	<member>BRB</member>
+	<member>Phone</member>
+	<member>Lunch, Food</member>
+	<member>Invisible, Hidden</member>
+</simplelist>
+
+<para>
+So <emphasis>/away Food</emphasis> will set your state to "Out to lunch" on your MSN connection, and for most other connections the default, "Away" will be chosen.
+</para>
+
+<para>
+You can also add more information to your away message. Setting it to "Busy - Fixing BitlBee bugs" will set your IM-away-states to Busy, but your away message will be more descriptive for people on IRC. Most IM-protocols can also show this additional information to your buddies.
+</para>
+
+<para>
+If you want to set an away state for only one of your connections, you can use the per-account <emphasis>away</emphasis> setting. See <emphasis>help set away</emphasis>.
+</para>
+
+</sect1>
+
+<sect1 id="nick_changes">
+<title>Changing your nickname</title>
+
+<para>
+BitlBee now allows you to change your nickname. So far this was not possible because it made managing saved accounts more complicated.
+</para>
+
+<para>
+The restriction no longer exists now though. When you change your nick (just using the <emphasis>/nick</emphasis> command), your logged-in status will be reset, which means any changes made to your settings/accounts will not be saved.
+</para>
+
+<para>
+To restore your logged-in status, you need to either use the <emphasis>register</emphasis> command to create an account under the new nickname, or use <emphasis>identify -noload</emphasis> to re-identify yourself under the new nickname. The <emphasis>-noload</emphasis> flag tells the command to verify your password and log you in, but not load any new settings. See <emphasis>help identify</emphasis> for more information.
+</para>
+
+</sect1>
+
+<sect1 id="channels">
+<title>Dealing with channels</title>
+
+<para>
+You can have as many channels in BitlBee as you want. You maintain your channel list using the <emphasis>channel</emphasis> command. You can create new channels by just joining them, like on regular IRC networks.
+</para>
+
+<para>
+You can create two kinds of channels. Control channels, and groupchat channels. By default, BitlBee will set up new channels as control channels if their name starts with an &amp;, and as chat channels if it starts with a #.
+</para>
+
+<para>
+Control channels are where you see your contacts. By default, you will have one control channel called &amp;bitlbee, containing all your contacts. But you can create more, if you want, and divide your contact list accross several channels.
+</para>
+
+<para>
+For example, you can have one channel with all contacts from your MSN Messenger account in it. Or all contacts from the group called "Work".
+</para>
+
+<para>
+Type <emphasis>help channels2</emphasis> to read more.
+</para>
+
+</sect1>
+
+<sect1 id="channels2">
+<title>Creating a channel</title>
+
+<para>
+When you create a new channel, BitlBee will try to guess from its name which contacts to fill it with. For example, if the channel name (excluding the &amp;) matches the name of a group in which you have one or more contacts, the channel will contain all those contacts.
+</para>
+
+<para>
+Any valid account ID (so a number, protocol name or part of screenname, as long as it's unique) can also be used as a channel name. So if you just join &amp;msn, it will contain all your MSN contacts. And if you have a Facebook account set up, you can see its contacts by just joining &amp;facebook.
+</para>
+
+<para>
+To start a simple group chat, you simply join a channel which a name starting with #, and invite people into it. All people you invite have to be on the same IM network and contact list.
+</para>
+
+<para>
+If you want to configure your own channels, you can use the <emphasis>channel set</emphasis> command. See <emphasis>help channels3</emphasis> for more information.
+</para>
+
+</sect1>
+
+<sect1 id="channels3">
+<title>Configuring a control channel</title>
+
+<para>
+The most important setting for a control channel is <emphasis>fill_by</emphasis>. It
+tells BitlBee what information should be used to decide if someone should be shown
+in the channel or not. After setting this setting to, for example, <emphasis>account</emphasis>, you
+also have to set the <emphasis>account</emphasis> setting. Example:
+</para>
+
+<ircexample>
+	<ircline nick="wilmer">chan set &amp;wlm fill_by account</ircline>
+	<ircline nick="root">fill_by = `account'</ircline>
+	<ircline nick="wilmer">chan set &amp;wlm account msn</ircline>
+	<ircline nick="root">account = `msn'</ircline>
+</ircexample>
+
+<para>
+Also, each channel has a <emphasis>show_users</emphasis> setting which lets you
+choose, for example, if you want to see only online contacts in a channel, or
+also/just offline contacts. Example:
+</para>
+
+<ircexample>
+	<ircline nick="wilmer">chan set &amp;offline show_users offline</ircline>
+	<ircline nick="root">show_users = `offline'</ircline>
+</ircexample>
+
+<para>
+See the help information for all these settings for more information.
+</para>
+
+</sect1>
+
+<sect1 id="nick_format">
+<title>Nickname formatting</title>
+
+<para>
+The <emphasis>nick_format</emphasis> setting can be set globally using
+the <emphasis>set</emphasis> command, or per account using <emphasis>account
+set</emphasis> (so that you can set a per-account suffix/prefix or have 
+nicknames generated from full names for certain accounts).
+</para>
+
+<para>
+The setting is basically some kind of format string. It can contain normal
+text that will be copied to the nick, combined with several variables:
+</para>
+
+<variablelist>
+	<varlistentry><term>%nick</term><listitem><para>Nickname suggested for this contact by the IM protocol, or just the handle if no nickname was suggested.</para></listitem></varlistentry>
+	<varlistentry><term>%handle</term><listitem><para>The handle/screenname of the contact.</para></listitem></varlistentry>
+	<varlistentry><term>%full_name</term><listitem><para>The full name of the contact.</para></listitem></varlistentry>
+	<varlistentry><term>%first_name</term><listitem><para>The first name of the contact (the full name up to the first space).</para></listitem></varlistentry>
+	<varlistentry><term>%group</term><listitem><para>The name of the group this contact is a member of</para></listitem></varlistentry>
+	<varlistentry><term>%account</term><listitem><para>Account tag of the contact</para></listitem></varlistentry>
+</variablelist>
+
+<para>
+Invalid characters (like spaces) will always be stripped. Depending on your
+locale settings, characters with accents will be converted to ASCII.
+</para>
+
+<para>
+See <emphasis>help nick_format2</emphasis> for some more information.
+</para>
+
+</sect1>
+
+<sect1 id="nick_format2">
+<title>Nickname formatting - modifiers</title>
+
+<para>
+Two modifiers are currently available: You can include only the first few
+characters of a variable by putting a number right after the %. For
+example, <emphasis>[%3group]%-@nick</emphasis> will include only the first
+three characters of the group name in the nick.
+</para>
+
+<para>
+Also, you can truncate variables from a certain character using
+the <emphasis>-</emphasis> modifier. For example, you may want to leave out
+everything after the @. <emphasis>%-@handle</emphasis> will expand to
+everything in the handle up to the first @.
+</para>
+
+</sect1>
+
+<sect1 id="whatsnew010206">
+<title>New stuff in BitlBee 1.2.6</title>
+
+<para>
+Twitter support. See <emphasis>help account add twitter</emphasis>.
+</para>
+</sect1>
+
+<sect1 id="whatsnew010300">
+<title>New stuff in BitlBee 1.3dev</title>
+
+<para>
+Support for multiple configurable control channels, each with a subset of
+your contact list. See <emphasis>help channels</emphasis> for more
+information.
+</para>
+
+<para>
+File transfer support for some protocols (more if you use libpurple). Just
+/DCC SEND stuff. Incoming files also become DCC transfers.
+</para>
+
+<para>
+Only if you run your own BitlBee instance: You can build a BitlBee that uses
+libpurple for connecting to IM networks instead of its own code, adding
+support for some of the more obscure IM protocols and features.
+</para>
+
+<para>
+Many more things, briefly described in <emphasis>help news1.3</emphasis>.
+</para>
+</sect1>
+
+<sect1 id="whatsnew030000">
+<title>New stuff in BitlBee 3.0</title>
+
+<para>
+BitlBee can be compiled with support for OTR message encryption (not available
+on public servers since encryption should be end-to-end).
+</para>
+
+<para>
+The MSN module was heavily updated to support features added to MSN Messenger
+over the recent years. You can now see/set status messages, send offline
+messages, and many strange issues caused by Microsoft breaking old-protocol
+compatibility should now be resolved.
+</para>
+
+<para>
+Twitter extended: IRC-style replies ("BitlBee:") now get converted to proper
+Twitter replies ("@BitlBee") and get a reference to the original message
+(see <emphasis>help set auto_reply_timeout</emphasis>). Retweets and some
+other stuff is also supported now (see <emphasis>help set commands</emphasis>).
+</para>
+</sect1>
+
+<sect1 id="news1.3">
+<title>New stuff in BitlBee 1.3dev (details)</title>
+
+<para>
+Most of the core of BitlBee was rewritten since the last release. This entry
+should sum up the majority of the changes.
+</para>
+
+<para>
+First of all, you can now have as many control channels as you want. Or you
+can have none, it's finally possible to leave &amp;bitlbee and still talk to
+all your contacts. Or you can have a &amp;work with all your work-related
+contacts, or a &amp;msn with all your MSN Messenger contacts. See <emphasis>help
+channels</emphasis> for more information about this.
+</para>
+
+<para>
+Also, you can change how nicknames are generated for your contacts. Like
+automatically adding a [fb] tag to the nicks of all your Facebook contacts.
+See <emphasis>help nick_format</emphasis>.
+</para>
+
+<para>
+When you're already connected to a BitlBee server and you connect from
+elsewhere, you can take over the old session.
+</para>
+
+<para>
+Instead of account numbers, accounts now also get tags. These are
+automatically generated but can be changed (<emphasis>help set
+tag</emphasis>). You can now use them instead of accounts numbers.
+(Example: <emphasis>acc gtalk on</emphasis>)
+</para>
+
+<para>
+Last of all: You can finally change your nickname and
+shorten root commands (try <emphasis>acc li</emphasis> instead
+of <emphasis>account list</emphasis>).
+</para>
+
+</sect1>
+
+</chapter>

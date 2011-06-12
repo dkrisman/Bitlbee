@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+
+<book id="BitlBee-User-Guide" xmlns:xi="http://www.w3.org/2003/XInclude">
+<bookinfo>
+	<title>BitlBee User Guide</title>
+	<author>
+		<firstname>Jelmer</firstname><surname>Vernooij</surname>
+		<address><email>jelmer@samba.org</email></address>
+	</author>
+
+	<author>
+		<firstname>Wilmer</firstname><surname>van der Gaast</surname>
+		<address><email>wilmer@gaast.net</email></address>
+	</author>
+
+	<author>
+		<firstname>Sjoerd</firstname><surname>Hemminga</surname>
+		<address><email>sjoerd@huiswerkservice.nl</email></address>
+	</author>
+
+	<legalnotice id="legalnotice">
+    </legalnotice>
+
+   <releaseinfo>
+   		This is the BitlBee User Guide. For now, the on-line help is
+		the most up-to-date documentation. Although this document shares
+		some parts with the on-line help system, other parts might be
+		very outdated.
+   </releaseinfo>
+
+  </bookinfo>
+
+  <xi:include href="Installation.xml"/>
+  <xi:include href="Usage.xml"/>
+  <xi:include href="Support.xml"/>
+  <xi:include href="quickstart.xml"/>
+  <xi:include href="commands.xml"/>
+  <xi:include href="misc.xml"/>
+
+</book>

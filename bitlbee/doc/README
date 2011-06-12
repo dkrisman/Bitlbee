@@ -1,0 +1,196 @@
+INSTALLATION
+============
+
+If you installed BitlBee from a .deb or .rpm you probably don't have to do
+anything anymore for installation. Just skip this section.
+
+If you want to compile BitlBee yourself, that's fine. Just run ./configure
+to set up the build system. If configure succeeds, run make to build BitlBee.
+make install will move all the files to the right places.
+
+--- (Fork)Daemon mode
+
+These days ForkDaemon mode is the recommended way of running BitlBee. The
+difference between Daemon and ForkDaemon mode is that in the latter, a
+separate process is spawned for every user. This costs a little bit more
+memory, but means that if one user hits a bug in the code, not all other
+users get disconnected with him/her.
+
+To use BitlBee in any daemon mode, just start it with the right flags or
+enable it in bitlbee.conf (see the RunMode option). You probably want to
+write an init script to start BitlBee automatically after a reboot. (This
+is where you realise using a package from your distro would've been a better
+idea. :-P)
+
+Please do make sure that the user BitlBee runs as (not root, please!) is
+able to read from and write to the /var/lib/bitlbee directory to save your
+settings!
+
+--- inetd installation (more or less deprecated)
+
+After installation you have to set up inetd (you got that one running,
+right? If not, just take a look at utils/bitlbeed.c) to start BitlBee. You
+need to add BitlBee to inetd.conf, like this:
+
+6667 stream tcp nowait nobody /usr/sbin/tcpd /usr/local/sbin/bitlbee
+
+Creating a special BitlBee user and running BitlBee with that UID (instead
+of just 'nobody') might be a good idea.
+
+*BSD/Darwin/OSX NOTE: Most *BSD inetds are more scrict than the one that
+comes with Linux systems. Possibly all non-Linux inetds are like this. They
+don't allow you to specify a port number in the inetd.conf entry, instead
+you have to put a service name there (one that is also mentioned in
+/etc/services). So if there's no line in /services for 6667/tcp (or whatever
+you choose), add it and use that name in the inetd.conf entry.
+
+-- xinetd installation (equally deprecated)
+
+Most machines use xinetd instead of inetd these days. If your machine runs
+xinetd, you can copy the bitlbee.xinetd file from the doc/ directory to your
+xinetd.d/ directory. Most likely you'll have to change a thing or two before
+it'll work.
+
+After configuring your (x)inetd, send the daemon a SIGHUP and things should
+work. If not, see your syslogs, since both daemons will complain there when
+something's wrong.
+
+Also, don't forget to create the configuration directory (/var/lib/bitlbee/
+by default) and chown it to the UID BitlBee is running as. Make sure this
+directory is read-/writable by this user only.
+
+
+DEPENDENCIES
+============
+
+BitlBee's only real dependency is GLib. This is available on virtually every
+platform. Any recent version of GLib (2.4 or higher) will work.
+
+Off-the-Record encryption support can be included if libotr is available on
+your machine. Pass --otr=1 to configure to build it into BitlBee, or
+--otr=plugin to build it as a separate loadable plugin (mostly meant for
+distro packages).
+
+These days, many IM protocols use SSL/TLS connections (for authentication
+or for the whole session). BitlBee can use several SSL libraries for this:
+GnuTLS, NSS (which comes with Mozilla) and OpenSSL. OpenSSL is not GPL-
+compatible in some situations, so using GnuTLS is preferred. However,
+especially on *BSD, OpenSSL can be considered part of the operating system,
+which eliminates the GPL incompatibility.
+
+The incompatibility is also the reason why the SSL library detection code
+doesn't attempt to use OpenSSL. If you want to use OpenSSL, you have to
+force configure to use it using the --ssl=openssl parameter. For more
+information about this problem, see the URL's configure will write to stdout
+when you attempt to use OpenSSL.
+
+
+PORTABILITY ISSUES
+==================
+
+Cygwin NOTE: You'll need a glib installation to run BitlBee. However, Cygwin
+doesn't provide a glib package. You can download a binary tar.gz from:
+<http://my.dreamwiz.com/jbdoll/>. When you installed it, BitlBee should work
+fine. You'll probably like bitlbeed or xinetd to get it running on the
+network.
+
+On some non-Linux systems the program still suffers from some random bugs.
+Please do report them, we might be able to fix them if they're not too
+mysterious.
+
+Also, the configure script is known to not work very well with non-Bash
+shells, so if you experience problems, make sure you use bash to run the
+script. Same for the Makefile, it only works well with GNU make. (gmake on
+most BSD systems)
+
+If someone can tell us how to write Makefiles that work with both/all
+versions of make, we'd love to hear it, but it seems this just isn't
+possible.
+
+
+USAGE
+=====
+
+Not much to say here, it's all documented elsewhere already. Just connect to
+the new BitlBee IRC server and the bot (root) will tell you what to do.
+
+
+BACKGROUNDS
+===========
+
+We are both console lovers. But it is annoying to have a few tty's open with
+chat things in them. IRC, ICQ, MSN, AIM, Jabber... For X there is Gaim, which
+supports many chatprotocols. Why wasn't there such a thing for the console?
+
+The idea to port Gaim was easily thought of, of course. But we liked our IRC
+clients. And we used it the most, so we used it best. Importing it into the
+IRC client was a nice idea. But what if someone liked a different client.
+Then (s)he had to duplicate our work.
+
+That's a shame, we thought. Doing work twice is pointless. So when Wilmer
+got the ingenious thought in his mind while farming, to create an IRC to
+other chatnetworks gateway, we were both so excited, that we started working
+on it almost immediately. And the result is BitlBee.
+
+
+WEBSITE
+=======
+
+You can find new releases of BitlBee at:
+http://www.bitlbee.org/
+
+The bug tracking system:
+http://bugs.bitlbee.org/
+
+Our version control system is Bazaar. Our repository is at:
+http://code.bitlbee.org/
+
+More documentation on the Wiki:
+http://wiki.bitlbee.org/
+
+
+A NOTE ON PASSWORD ENCRYPTION
+=============================
+
+There used to be a note here about the simple obfuscation method used to
+make the passwords in the configuration files unreadable. However, BitlBee
+now uses a better format (and real encryption (salted MD5 and RC4)) to store
+the passwords. This means that people who somehow get their hands on your
+configuration files can't easily extract your passwords from them anymore.
+
+However, once you log into the BitlBee server and send your password, an
+intruder with tcpdump can still read your passwords. This can't really be
+avoided, of course. The new format is a lot more reliable (because it can't
+be cracked with just very basic crypto analysis anymore), but you still have
+to be careful. The main extra protection offered by the new format is that
+the files can only be cracked with some help from the user (by sending the
+password at login time).
+
+So if you run a public server, it's most important that you don't give root
+access to people who like to play with tcpdump. Also, it's a good idea to
+delete all *.nicks/*.accounts files as soon as BitlBee converted them to the
+new format (which happens as soon as the user logs in, it can't be done
+automatically because it needs the password for that account). You won't
+need them anymore (unless you want to switch back to an older BitlBee
+version) and they only make it easier for others to crack your passwords.
+
+
+LEGAL
+=====
+
+BitlBee is distributed under the GPL (GNU General Public License). See the
+file COPYING for this license.
+
+The MD5 algorithm code is licensed under the Aladdin license. This license
+can be found in the files, to which this applies. The SHA1 algorithm code
+is licensed under the Mozilla Public License, see http://www.mozilla.org/MPL/
+for details.
+
+The Yahoo! library used by BitlBee is libyahoo2 <http://libyahoo2.sf.net/>,
+also licensed under the GPL.
+
+
+	BitlBee - An IRC to other chat networks gateway 
+	          <http://www.bitlbee.org/>
+	Copyright (C) 2002-2010  Wilmer van der Gaast <wilmer@gaast.net>
+	                         and others
